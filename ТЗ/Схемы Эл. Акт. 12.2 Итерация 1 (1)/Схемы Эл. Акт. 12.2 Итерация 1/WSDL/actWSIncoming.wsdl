@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- version 12.1, create date 12.05.2022 -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:include schemaLocation="../DP_PAKET_EIS_01_00.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="receiveFileRequest">
+		<wsdl:part name="parameters" element="ФайлПакет"/>
+	</wsdl:message>
+	<wsdl:message name="getProcessingResultRequest">
+		<wsdl:part name="parameters" element="ФайлЗапросРезул"/>
+	</wsdl:message>
+	<wsdl:message name="resultResponse">
+		<wsdl:part name="parameters" element="ФайлРезул"/>
+	</wsdl:message>
+	<wsdl:portType name="wsActingPortType">
+		<wsdl:operation name="receiveFile">
+			<wsdl:input message="receiveFileRequest"/>
+			<wsdl:output message="resultResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="getProcessingResult">
+			<wsdl:input message="getProcessingResultRequest"/>
+			<wsdl:output message="resultResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="wsActingBinding" type="wsActingPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="receiveFile">
+			<soap:operation soapAction="receiveFile"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="getProcessingResult">
+			<soap:operation soapAction="getProcessingResult"/>
+			<wsdl:input>
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="eisWSActing">
+		<wsdl:port name="wsActingPort" binding="wsActingBinding">
+			<soap:address location="${serviceLocation}"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

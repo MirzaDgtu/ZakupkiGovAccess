@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- version 12.1, create date 12.05.2022 -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://zakupki.gov.ru/eruz/ws/elacts" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://zakupki.gov.ru/eruz/ws/elacts">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://zakupki.gov.ru/eruz/ws/elacts" schemaLocation="../elacts-docs-ws-api.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="lkzGetSignersInfoRequest">
+		<wsdl:part name="lkzGetSignersInfoRequest" element="sch:lkzGetSignersInfoRequest"/>
+	</wsdl:message>
+	<wsdl:message name="lkzGetSignersInfoResponse">
+		<wsdl:part name="lkzGetSignersInfoResponse" element="sch:lkzGetSignersInfoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="lkzGetObjectListRequest">
+		<wsdl:part name="lkzGetObjectListRequest" element="sch:lkzGetObjectListRequest"/>
+	</wsdl:message>
+	<wsdl:message name="lkzGetObjectListResponse">
+		<wsdl:part name="lkzGetObjectListResponse" element="sch:lkzGetObjectListResponse"/>
+	</wsdl:message>
+	<wsdl:message name="lkzGetObjectInfoRequest">
+		<wsdl:part name="lkzGetObjectInfoRequest" element="sch:lkzGetObjectInfoRequest"/>
+	</wsdl:message>
+	<wsdl:message name="lkzGetObjectInfoResponse">
+		<wsdl:part name="lkzGetObjectInfoResponse" element="sch:lkzGetObjectInfoResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="GetDataPortType">
+		<wsdl:operation name="lkzGetSignersInfo">
+			<wsdl:input name="lkzGetSignersInfoRequest" message="sch:lkzGetSignersInfoRequest"/>
+			<wsdl:output name="lkzGetSignersInfoResponse" message="sch:lkzGetSignersInfoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="lkzGetObjectList">
+			<wsdl:input name="lkzGetObjectListRequest" message="sch:lkzGetObjectListRequest"/>
+			<wsdl:output name="lkzGetObjectListResponse" message="sch:lkzGetObjectListResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="lkzGetObjectInfo">
+			<wsdl:input name="lkzGetObjectInfoRequest" message="sch:lkzGetObjectInfoRequest"/>
+			<wsdl:output name="lkzGetObjectInfoResponse" message="sch:lkzGetObjectInfoResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="GetDataPortTypeSoap11" type="sch:GetDataPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="lkzGetSignersInfo">
+			<soap:operation soapAction="http://zakupki.gov.ru/fz44/ws/rdik/lkz-get-signers-info"/>
+			<wsdl:input name="lkzGetSignersInfoRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="lkzGetSignersInfoResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="lkzGetObjectList">
+			<soap:operation soapAction="http://zakupki.gov.ru/fz44/ws/rdik/lkz-get-object-list"/>
+			<wsdl:input name="lkzGetObjectListRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="lkzGetObjectListResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="lkzGetObjectInfo">
+			<soap:operation soapAction="http://zakupki.gov.ru/fz44/ws/rdik/lkz-get-object-info"/>
+			<wsdl:input name="lkzGetObjectInfoRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="lkzGetObjectInfoResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="GetDataPortTypeService">
+		<wsdl:port name="GetDataPortTypeSoap11" binding="sch:GetDataPortTypeSoap11">
+			<soap:address location="${serviceLocation}"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

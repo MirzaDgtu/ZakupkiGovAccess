@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- version 12.1, create date 12.05.2022 -->
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:sch="http://zakupki.gov.ru/eruz/ws/elacts" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://zakupki.gov.ru/eruz/ws/elacts">
+	<wsdl:types>
+		<xsd:schema>
+			<xsd:import namespace="http://zakupki.gov.ru/eruz/ws/elacts" schemaLocation="../elacts-docs-ws-api.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="lkpGetContractsListRequest">
+		<wsdl:part name="lkpGetContractsListRequest" element="sch:lkpGetContractsListRequest"/>
+	</wsdl:message>
+	<wsdl:message name="lkpGetContractsListResponse">
+		<wsdl:part name="lkpGetContractsListResponse" element="sch:lkpGetContractsListResponse"/>
+	</wsdl:message>
+	<wsdl:message name="lkpGetParticipantInfoRequest">
+		<wsdl:part name="lkpGetParticipantInfoRequest" element="sch:lkpGetParticipantInfoRequest"/>
+	</wsdl:message>
+	<wsdl:message name="lkpGetParticipantInfoResponse">
+		<wsdl:part name="lkpGetParticipantInfoResponse" element="sch:lkpGetParticipantInfoResponse"/>
+	</wsdl:message>
+	<wsdl:message name="lkpGetObjectListRequest">
+		<wsdl:part name="lkpGetObjectListRequest" element="sch:lkpGetObjectListRequest"/>
+	</wsdl:message>
+	<wsdl:message name="lkpGetObjectListResponse">
+		<wsdl:part name="lkpGetObjectListResponse" element="sch:lkpGetObjectListResponse"/>
+	</wsdl:message>
+	<wsdl:message name="lkpGetObjectInfoRequest">
+		<wsdl:part name="lkpGetObjectInfoRequest" element="sch:lkpGetObjectInfoRequest"/>
+	</wsdl:message>
+	<wsdl:message name="lkpGetObjectInfoResponse">
+		<wsdl:part name="lkpGetObjectInfoResponse" element="sch:lkpGetObjectInfoResponse"/>
+	</wsdl:message>
+	<wsdl:portType name="GetDataPortType">
+		<wsdl:operation name="lkpGetContractsList">
+			<wsdl:input name="lkpGetContractsListRequest" message="sch:lkpGetContractsListRequest"/>
+			<wsdl:output name="lkpGetContractsListResponse" message="sch:lkpGetContractsListResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="lkpGetParticipantInfo">
+			<wsdl:input name="lkpGetParticipantInfoRequest" message="sch:lkpGetParticipantInfoRequest"/>
+			<wsdl:output name="lkpGetParticipantInfoResponse" message="sch:lkpGetParticipantInfoResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="lkpGetObjectList">
+			<wsdl:input name="lkpGetObjectListRequest" message="sch:lkpGetObjectListRequest"/>
+			<wsdl:output name="lkpGetObjectListResponse" message="sch:lkpGetObjectListResponse"/>
+		</wsdl:operation>
+		<wsdl:operation name="lkpGetObjectInfo">
+			<wsdl:input name="lkpGetObjectInfoRequest" message="sch:lkpGetObjectInfoRequest"/>
+			<wsdl:output name="lkpGetObjectInfoResponse" message="sch:lkpGetObjectInfoResponse"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="GetDataPortTypeSoap11" type="sch:GetDataPortType">
+		<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="lkpGetContractsList">
+			<soap:operation soapAction="http://zakupki.gov.ru/eruz/ws/elacts/lkp-get-contract-list"/>
+			<wsdl:input name="lkpGetContractsListRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="lkpGetContractsListResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="lkpGetParticipantInfo">
+			<soap:operation soapAction="http://zakupki.gov.ru/eruz/ws/elacts/lkp-get-participant-info"/>
+			<wsdl:input name="lkpGetParticipantInfoRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="lkpGetParticipantInfoResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="lkpGetObjectList">
+			<soap:operation soapAction="http://zakupki.gov.ru/eruz/ws/elacts/lkp-get-object-list-info"/>
+			<wsdl:input name="lkpGetObjectListRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="lkpGetObjectListResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="lkpGetObjectInfo">
+			<soap:operation soapAction="http://zakupki.gov.ru/eruz/ws/elacts/lkp-get-object-info"/>
+			<wsdl:input name="lkpGetObjectInfoRequest">
+				<soap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="lkpGetObjectInfoResponse">
+				<soap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="GetDataPortTypeService">
+		<wsdl:port name="GetDataPortTypeSoap11" binding="sch:GetDataPortTypeSoap11">
+			<soap:address location="${serviceLocation}"/>
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>
